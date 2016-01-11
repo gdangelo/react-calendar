@@ -6,6 +6,12 @@
     <script src="https://fb.me/react-0.14.6.min.js"></script>
     <script src="https://fb.me/react-dom-0.14.6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
   </head>
   <body>
     <div class="container"></div>
@@ -13,9 +19,30 @@
 
   <script type="text/babel">
     var App = React.createClass({
+      componentDidMount: function () {
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          }
+        });
+      },
+
       render: function () {
         return (
-          <h1>React Calendar</h1>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Calendar</h3>
+                </div>
+                <div className="panel-body">
+                  <div id='calendar'></div>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       }
     });
